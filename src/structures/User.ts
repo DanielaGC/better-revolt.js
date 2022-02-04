@@ -1,5 +1,5 @@
 import { Attachment } from 'revolt-api/types/Autumn'
-import { User as RawUser, Presence as RawPresence } from 'revolt-api/types/Users'
+import { User as RawUser, Presence as RawPresence, BotInformation } from 'revolt-api/types/Users'
 import { Base, DMChannel } from '.'
 import { Client } from '..'
 import { Badges, Presence, UUID } from '../util'
@@ -16,6 +16,7 @@ export class User extends Base {
         presence: Presence
     }
     badges!: Badges
+    bot!: BotInformation | undefined
     constructor(client: Client, data: RawUser) {
         super(client)
         this._patch(data)
@@ -44,6 +45,10 @@ export class User extends Base {
             const presence = data.status?.presence ? Presence[data.status.presence.toUpperCase() as Uppercase<RawPresence>] : Presence.INVISIBLE
             this.status.presence = presence
             this.status.text = data.status?.text ?? null
+        }
+
+        if ('bot' in data) {
+            this.bot = data.bot
         }
 
         return this
