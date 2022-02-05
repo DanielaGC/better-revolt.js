@@ -6,7 +6,8 @@
     "build": "tsc",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier --write src/**/*.ts"
+    "format": "prettier --write src/**/*.ts",
+    "postinstall": "tsc"
   },
   "main": "dist/index.js",
   "license": "GNU-3.0",
