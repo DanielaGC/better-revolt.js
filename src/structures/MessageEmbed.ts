@@ -1,4 +1,4 @@
-import { Embed } from 'revolt-api/types/January'
+import { JanuaryEmbed } from 'revolt-api/types/January'
 
 export type EmbedImage = {
     url: string
@@ -22,7 +22,7 @@ export type EmbedSpecial =
     | { type: 'Bandcamp'; content_type: 'Album' | 'Track'; id: string }
 
 export class MessageEmbed {
-    type: Embed['type'] = 'Website'
+    type!: 'Website'
     url?: string
     special?: EmbedSpecial
     title?: string
@@ -33,7 +33,7 @@ export class MessageEmbed {
     icon_url?: string
     color?: string
 
-    constructor(data: Partial<Embed> = {}) {
+    constructor(data: Partial<JanuaryEmbed> = {}) {
         Object.assign(this, data)
     }
 

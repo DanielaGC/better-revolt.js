@@ -1,5 +1,4 @@
 import { Message as RawMessage, SystemMessage } from 'revolt-api/types/Channels'
-import { Embed } from 'revolt-api/types/January'
 import { Base, DMChannel, GroupChannel, Mentions, Server, ServerMember, TextChannel, User } from '.'
 import { Client } from '..'
 import { MessageTypes, UUID } from '../util'
@@ -9,7 +8,7 @@ export class Message extends Base {
     id!: string
     channelId!: string
     authorId!: string
-    embeds: Embed[] = []
+    embeds!: Array<unknown>
     deleted = false
     mentions = new Mentions(this)
     type: MessageTypes | 'UNKNOWN' = MessageTypes.TEXT
